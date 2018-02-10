@@ -1,0 +1,49 @@
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 200;
+}
+label:after {
+  content: "→";
+}
+.open:after {
+  content: "←";
+}
+
+.infinity-menu-container {
+  overflow: hidden;
+  width: 350px;
+  padding: 10px;
+  margin: 20px;
+  background-color: #F3F3F3;
+
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+
+.infinity-menu-node-container {
+  padding-left: 1em;
+}
+
+
+.infinity-menu-leaf-container {
+  padding-left: 2em;
+}
+
+.infinity-menu-leaf-container:before {
+  content: "•";
+}
+
+.react-infinity-menu-default-search-input {
+  //background: transparent;
+  border-width: 1px;
+  line-height: 1.5;
+  height: 28px;
+  padding-left: 1em;
+  width: 100%;
+}
+
+.react-infinity-menu-default-search-input:focus {
+  border-color: #737fc4;
+}

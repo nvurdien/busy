@@ -15,6 +15,7 @@ import withEditor from './withEditor';
 import EditorInput from './EditorInput';
 import Body, { remarkable } from '../Story/Body';
 import './Editor.less';
+import PredictionWidget from './PredictionWidget';
 
 @injectIntl
 @requiresLogin
@@ -228,14 +229,15 @@ class Editor extends React.Component {
     const { bodyHTML } = this.state;
 
     const { words, minutes } = readingTime(bodyHTML);
-
     return (
-      <Form className="Editor" layout="vertical" onSubmit={this.handleSubmit}>
+
+        <Form className="Editor" layout="vertical" onSubmit={this.handleSubmit}>
         <Helmet>
           <title>
             {intl.formatMessage({ id: 'write_post', defaultMessage: 'Write post' })} - Busy
           </title>
         </Helmet>
+          <PredictionWidget/>
         <Form.Item
           label={
             <span className="Editor__label">
