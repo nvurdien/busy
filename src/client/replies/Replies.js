@@ -29,6 +29,7 @@ export class IReplies extends React.Component {
   };
 
   static defaultProps = {
+    intl: {},
     authenticated: false,
     username: '',
     feed: {},
