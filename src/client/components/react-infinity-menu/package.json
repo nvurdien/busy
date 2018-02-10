@@ -32,7 +32,8 @@
   "bundleDependencies": false,
   "dependencies": {
     "lodash.get": "^4.4.2",
-    "nested-objects": "0.0.2"
+    "nested-objects": "0.0.2",
+    "prettier": "^1.10.2"
   },
   "deprecated": false,
   "description": "An unlimited deep side menu",
