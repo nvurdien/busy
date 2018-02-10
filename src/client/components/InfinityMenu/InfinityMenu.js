@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import NestedObjects from 'nested-objects';
 import _get from 'lodash.get';
-import SearchInput from './search-input';
+import SearchInput from './InfinityMenuSearch';
 
 /*
  *  @class InfinityMenu
@@ -276,37 +276,37 @@ export default class InfinityMenu extends React.Component {
   }
 
   findFiltered(trees, node, key) {
-    if (!node.children) {
-      const nodeMatchesSearchFilter = this.props.filter(node, this.state.search.searchInput);
-      if (nodeMatchesSearchFilter) {
-        node.isSearchDisplay = true;
-        trees[key] = node;
-        return trees;
-      }
-
-      node.isSearchDisplay = false;
-      trees[key] = node;
-      return trees;
-    }
-
-    const filteredSubFolder = node.children.length
-      ? node.children.reduce((p, c, k) => this.findFiltered(p, c, k), [])
-      : [];
-    const shouldDisplay = filteredSubFolder.some(child => child.isSearchDisplay);
-
-    if (shouldDisplay) {
-      node.isSearchOpen = true;
-      node.children = filteredSubFolder;
+    // if (!node.children) {
+    const nodeMatchesSearchFilter = this.props.filter(node, this.state.search.searchInput);
+    if (nodeMatchesSearchFilter) {
       node.isSearchDisplay = true;
-      node.maxLeaves = node.maxLeaves ? node.maxLeaves : this.props.maxLeaves;
       trees[key] = node;
       return trees;
     }
 
-    node.isSearchOpen = false;
     node.isSearchDisplay = false;
     trees[key] = node;
     return trees;
+    // }
+
+    // const filteredSubFolder = node.children.length
+    //   ? node.children.reduce((p, c, k) => this.findFiltered(p, c, k), [])
+    //   : [];
+    // const shouldDisplay = filteredSubFolder.some(child => child.isSearchDisplay);
+    //
+    // if (shouldDisplay) {
+    //   node.isSearchOpen = true;
+    //   node.children = filteredSubFolder;
+    //   node.isSearchDisplay = true;
+    //   node.maxLeaves = node.maxLeaves ? node.maxLeaves : this.props.maxLeaves;
+    //   trees[key] = node;
+    //   return trees;
+    // }
+    //
+    // node.isSearchOpen = false;
+    // node.isSearchDisplay = false;
+    // trees[key] = node;
+    // return trees;
   }
 
   /*

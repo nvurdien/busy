@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-bind */
 import React from 'react';
-import InfinityMenu from '../react-infinity-menu/src/infinity-menu';
+import InfinityMenu from '../InfinityMenu/InfinityMenu';
 import './PredictionWidget.less';
-import predictionData from './predictionData';
+import predictionData from './PredictionWidgetData';
 
 class PredictionWidget extends React.Component {
   constructor(props) {
