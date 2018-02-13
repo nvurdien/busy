@@ -4,7 +4,13 @@ const getChangedFiles = require('../utils/getChangedFiles');
 
 const options = {
   patterns: ['**/*.js', '**/*.less'],
-  ignore: ['node_modules/**', 'public/**', 'assets/**', 'webpack/**'],
+  ignore: [
+    'node_modules/**',
+    'src/client/components/InfinityMenu/InfinityMenu.js',
+    'public/**',
+    'assets/**',
+    'webpack/**',
+  ],
 };
 
 function findFiles(onlyChanged) {
