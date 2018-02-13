@@ -91,7 +91,6 @@ class PredictionWidget extends React.Component {
           maxLeaves={100}
         />
         {this.state.value}
-
         {this.props.children}
       </div>
     );
