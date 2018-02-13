@@ -2,7 +2,7 @@
 import React from 'react';
 // import './autocomplete-0.3.0';
 import './PredictionWidget.less';
-// import './autocomplete-0.3.0.css'
+// import './autocomplete-0.3.0.css';
 import predictionData from './PredictionWidgetData';
 import InfinityMenu from '../InfinityMenu/InfinityMenu';
 
