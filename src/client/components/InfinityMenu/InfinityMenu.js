@@ -275,9 +275,14 @@ export default class InfinityMenu extends React.Component {
     });
   }
 
+
+  /* Change this function */
+  /* The search function */
+  /* Not entirely sure what his algorithm is and he doesn't respond to requests that frequently */
   findFiltered(trees, node, key) {
     // if (!node.children) {
     const nodeMatchesSearchFilter = this.props.filter(node, this.state.search.searchInput);
+
     if (nodeMatchesSearchFilter) {
       node.isSearchDisplay = true;
       trees[key] = node;
@@ -287,6 +292,9 @@ export default class InfinityMenu extends React.Component {
     node.isSearchDisplay = false;
     trees[key] = node;
     return trees;
+
+    /* Commented out because it loops through all the way to the end and searches the line items */
+
     // }
 
     // const filteredSubFolder = node.children.length
@@ -307,7 +315,28 @@ export default class InfinityMenu extends React.Component {
     // node.isSearchDisplay = false;
     // trees[key] = node;
     // return trees;
+
+    // node.children.map((n, index) => {
+    //   if (node.children[index].name.toString().includes(this.state.search.searchInput.toString())) {
+    //     node.children[index].isSearchOpen = true;
+    //     node.children[index].isSearchDisplay = true;
+    //     trees[key] = node;
+    //
+    //   }
+    //   node.children[index].children.map((m, ind) => {
+    //     if (node.children[index].children[ind].name.toString().includes(this.state.search.searchInput.toString())) {
+    //       node.children[index].children[ind].isSearchOpen = true;
+    //       node.children[index].children[ind].isSearchDisplay = true;
+    //       trees[key] = node;
+    //     }
+    //     return m;
+    //   });
+    //   return n;
+    // });
+    // return trees;
   }
+
+
 
   /*
 	 *  @function _renderBody

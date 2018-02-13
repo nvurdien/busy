@@ -12,3 +12,4 @@ busy.server.js
 # TODO: Eventually should be linted as well
 # Webpack
 webpack/
+src/client/components/PredictionWidget/autocomplete-0.3.0.js

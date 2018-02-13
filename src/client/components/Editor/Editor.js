@@ -236,127 +236,128 @@ class Editor extends React.Component {
             {intl.formatMessage({ id: 'write_post', defaultMessage: 'Write post' })} - Busy
           </title>
         </Helmet>
-        <PredictionWidget />
-        <Form.Item
-          label={
-            <span className="Editor__label">
-              <FormattedMessage id="title" defaultMessage="Title" />
-            </span>
-          }
-        >
-          {getFieldDecorator('title', {
-            initialValue: '',
-            rules: [
-              {
-                required: true,
-                message: intl.formatMessage({
-                  id: 'title_error_empty',
-                  defaultMessage: 'title_error_empty',
-                }),
-              },
-              {
-                max: 255,
-                message: intl.formatMessage({
-                  id: 'title_error_too_long',
-                  defaultMessage: "Title can't be longer than 255 characters.",
-                }),
-              },
-            ],
-          })(
-            <Input
-              ref={title => {
-                this.title = title;
-              }}
-              onChange={this.onUpdate}
-              className="Editor__title"
-              placeholder={intl.formatMessage({
-                id: 'title_placeholder',
-                defaultMessage: 'Add title',
-              })}
-            />,
-          )}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span className="Editor__label">
-              <FormattedMessage id="topics" defaultMessage="Topics" />
-            </span>
-          }
-          extra={intl.formatMessage({
-            id: 'topics_extra',
-            defaultMessage:
-              'Separate topics with commas. Only lowercase letters, numbers and hyphen character is permitted.',
-          })}
-        >
-          {getFieldDecorator('topics', {
-            initialValue: [],
-            rules: [
-              {
-                required: true,
-                message: intl.formatMessage({
-                  id: 'topics_error_empty',
-                  defaultMessage: 'Please enter topics',
-                }),
-                type: 'array',
-              },
-              { validator: Editor.checkTopics },
-            ],
-          })(
-            <Select
-              ref={ref => {
-                this.select = ref;
-              }}
-              onChange={this.onUpdate}
-              className="Editor__topics"
-              mode="tags"
-              placeholder={intl.formatMessage({
-                id: 'topics_placeholder',
-                defaultMessage: 'Add story topics here',
-              })}
-              dropdownStyle={{ display: 'none' }}
-              tokenSeparators={[' ', ',']}
-            />,
-          )}
-        </Form.Item>
-        <Form.Item
-          validateStatus={this.state.noContent ? 'error' : ''}
-          help={
-            this.state.noContent &&
-            intl.formatMessage({
-              id: 'story_error_empty',
-              defaultMessage: "Story content can't be empty.",
-            })
-          }
-        >
-          <EditorInput
-            initialValue={body}
-            autosize={{ minRows: 6, maxRows: 12 }}
-            addon={
-              <FormattedMessage
-                id="reading_time"
-                defaultMessage={'{words} words / {min} min read'}
-                values={{
-                  words,
-                  min: Math.ceil(minutes),
-                }}
-              />
-            }
-            onChange={this.handleBodyUpdate}
-            onImageUpload={this.props.onImageUpload}
-            onImageInvalid={this.props.onImageInvalid}
-          />
-        </Form.Item>
-        {bodyHTML && (
+        <PredictionWidget>
           <Form.Item
             label={
               <span className="Editor__label">
-                <FormattedMessage id="preview" defaultMessage="Preview" />
+                <FormattedMessage id="title" defaultMessage="Title" />
               </span>
             }
           >
-            <Body full body={bodyHTML} />
+            {getFieldDecorator('title', {
+              initialValue: '',
+              rules: [
+                {
+                  required: true,
+                  message: intl.formatMessage({
+                    id: 'title_error_empty',
+                    defaultMessage: 'title_error_empty',
+                  }),
+                },
+                {
+                  max: 255,
+                  message: intl.formatMessage({
+                    id: 'title_error_too_long',
+                    defaultMessage: "Title can't be longer than 255 characters.",
+                  }),
+                },
+              ],
+            })(
+              <Input
+                ref={title => {
+                  this.title = title;
+                }}
+                onChange={this.onUpdate}
+                className="Editor__title"
+                placeholder={intl.formatMessage({
+                  id: 'title_placeholder',
+                  defaultMessage: 'Add title',
+                })}
+              />,
+            )}
           </Form.Item>
-        )}
+          <Form.Item
+            label={
+              <span className="Editor__label">
+                <FormattedMessage id="topics" defaultMessage="Topics" />
+              </span>
+            }
+            extra={intl.formatMessage({
+              id: 'topics_extra',
+              defaultMessage:
+                'Separate topics with commas. Only lowercase letters, numbers and hyphen character is permitted.',
+            })}
+          >
+            {getFieldDecorator('topics', {
+              initialValue: [],
+              rules: [
+                {
+                  required: true,
+                  message: intl.formatMessage({
+                    id: 'topics_error_empty',
+                    defaultMessage: 'Please enter topics',
+                  }),
+                  type: 'array',
+                },
+                { validator: Editor.checkTopics },
+              ],
+            })(
+              <Select
+                ref={ref => {
+                  this.select = ref;
+                }}
+                onChange={this.onUpdate}
+                className="Editor__topics"
+                mode="tags"
+                placeholder={intl.formatMessage({
+                  id: 'topics_placeholder',
+                  defaultMessage: 'Add story topics here',
+                })}
+                dropdownStyle={{ display: 'none' }}
+                tokenSeparators={[' ', ',']}
+              />,
+            )}
+          </Form.Item>
+          <Form.Item
+            validateStatus={this.state.noContent ? 'error' : ''}
+            help={
+              this.state.noContent &&
+              intl.formatMessage({
+                id: 'story_error_empty',
+                defaultMessage: "Story content can't be empty.",
+              })
+            }
+          >
+            <EditorInput
+              initialValue={body}
+              autosize={{ minRows: 6, maxRows: 12 }}
+              addon={
+                <FormattedMessage
+                  id="reading_time"
+                  defaultMessage={'{words} words / {min} min read'}
+                  values={{
+                    words,
+                    min: Math.ceil(minutes),
+                  }}
+                />
+              }
+              onChange={this.handleBodyUpdate}
+              onImageUpload={this.props.onImageUpload}
+              onImageInvalid={this.props.onImageInvalid}
+            />
+          </Form.Item>
+          {bodyHTML && (
+            <Form.Item
+              label={
+                <span className="Editor__label">
+                  <FormattedMessage id="preview" defaultMessage="Preview" />
+                </span>
+              }
+            >
+              <Body full body={bodyHTML} />
+            </Form.Item>
+          )}
+        </PredictionWidget>
         <Form.Item
           className={classNames({ Editor__hidden: isUpdating })}
           label={
