@@ -14,9 +14,9 @@ const http = require('http');
 const https = require('https');
 const steem = require('steem');
 
-steem.config.set('websocket', 'wss://testnet.steem.vc');
-steem.config.set('address_prefix', 'STX');
-steem.config.set('chain_id', '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673');
+steem.config.set('websocket', 'wss://159.89.228.236:9876');
+steem.config.set('address_prefix', 'TST');
+steem.config.set('chain_id', '18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e');
 
 http.globalAgent.maxSockets = Infinity;
 https.globalAgent.maxSockets = Infinity;
